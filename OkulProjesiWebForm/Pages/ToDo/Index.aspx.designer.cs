@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace OkulProjesiWebForm
+namespace OkulProjesiWebForm.Pages.ToDo
 {
-    public partial class Contact
+    public partial class Index
     {
     }
 }

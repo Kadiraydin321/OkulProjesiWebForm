@@ -15,8 +15,7 @@
     <script src="Scripts/WebForms/WebParts.js"></script>
     <script src="Scripts/WebForms/Focus.js"></script>
 
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+   
 
      <!-- Google Font: Source Sans Pro -->
     <link runat="server"  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,7 +37,8 @@
     <link runat="server"  rel="stylesheet" href="~/Template_Folder/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link runat="server"  rel="stylesheet" href="~/Template_Folder/plugins/summernote/summernote-bs4.min.css">
-
+     <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
      <div class="wrapper">
@@ -86,7 +86,7 @@
                             <a runat="server"  href="pages/widgets.html" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Widgets
+                                    Kullanıcılar
 
                                 </p>
                             </a>
@@ -123,21 +123,19 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-                <div class="container-fluid">
-                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                     </asp:ContentPlaceHolder>
-                </div>
-                <!-- /.container-fluid -->
-        </div>
+         <form id="form1" runat="server">
+            <div class="content-wrapper">
+                <!-- Main content -->
+                    <div class="container-fluid">
+                         <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                         </asp:ContentPlaceHolder>
+                    </div>
+                    <!-- /.container-fluid -->
+            </div>
+        </form>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2020 Kadir Aydın.</strong> Tüm haklar saklıdır.
-            <div class="float-right d-none d-sm-inline-block">
-                <a runat="server" href="#">Hakkımızda</a> -
-                <a runat="server" href="#">İletişim</a>
-            </div>
+            <strong>Copyright &copy; 2020.</strong> Tüm haklar saklıdır.
         </footer>
 
         <!-- Control Sidebar -->

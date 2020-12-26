@@ -105,9 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\About.aspx" />
     <Content Include="Pages\Account\Index.aspx" />
-    <Content Include="Pages\Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -126,6 +124,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Pages\ToDo\Index.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -178,6 +177,7 @@
     <Content Include="Template_Folder\build\npm\Plugins.js" />
     <Content Include="Template_Folder\build\npm\Publish.js" />
     <Content Include="Template_Folder\build\npm\vnu-jar.js" />
+    <Content Include="Template_Folder\default\Style.css" />
     <Content Include="Template_Folder\dist\css\adminlte.css" />
     <Content Include="Template_Folder\dist\css\adminlte.min.css" />
     <Content Include="Template_Folder\dist\css\alt\adminlte.components.css" />
@@ -2054,13 +2054,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Pages\About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Pages\Account\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -2068,13 +2061,6 @@
     </Compile>
     <Compile Include="Pages\Account\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -2085,6 +2071,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ToDo\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ToDo\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -2106,7 +2099,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Pages\Admin\" />
-    <Folder Include="Pages\ToDo\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
