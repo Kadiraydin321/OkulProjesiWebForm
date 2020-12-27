@@ -13,12 +13,26 @@ namespace OkulProjesiWebForm
        
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserName"] != null) 
+            { 
+                UserNameLabel.Text = Session["UserName"].ToString().ToUpper(); 
+            }
+            
+        }
+        protected void CikisLinkButton_Click(object sender, EventArgs e)
+        {
+            cikis();
+        }
+        private void cikis()
+        {
+            Session["UID"] = null;
+            Session["UserName"] = null;
+            Response.Redirect("~/Default.aspx");
         }
     }
 }
 
-
-/*  Sql Bağlatısı ve Veri çekme örneği
+/*
             SqlConnect conn = new SqlConnect();
             using (SqlCommand query = new SqlCommand("select * from test", conn.connection()))
             {

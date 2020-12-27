@@ -18,29 +18,30 @@
    
 
      <!-- Google Font: Source Sans Pro -->
-    <link runat="server"  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link runat="server"  rel="stylesheet" href="~/Template_Folder/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Template_Folder/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
-    <link runat="server"  rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link runat="server"  rel="stylesheet" href="~/Template_Folder/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="~/Template_Folder/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
-    <link runat="server"  rel="stylesheet" href="~/Template_Folder/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/Template_Folder/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
-    <link runat="server"  rel="stylesheet" href="~/Template_Folder/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="~/Template_Folder/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link runat="server"  rel="stylesheet" href="~/Template_Folder/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/Template_Folder/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
-    <link runat="server"  rel="stylesheet" href="~/Template_Folder/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="~/Template_Folder/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
-    <link runat="server"  rel="stylesheet" href="~/Template_Folder/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/Template_Folder/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
-    <link runat="server"  rel="stylesheet" href="~/Template_Folder/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="~/Template_Folder/plugins/summernote/summernote-bs4.min.css">
      <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+    <form id="form1" runat="server">
      <div class="wrapper">
 
         <!-- Navbar -->
@@ -50,7 +51,7 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a runat="server"  href="#" class="nav-link">Giriş</a>
+                        <asp:LinkButton ID="CikisLinkButton" OnClick="CikisLinkButton_Click" CssClass="nav-link btn btn-outline-success" runat="server" CausesValidation="false">Çıkış</asp:LinkButton>
                 </li>
             </ul>
         </nav>
@@ -59,31 +60,31 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a runat="server"  href="#" class="brand-link">
+            <a runat="server"  href="#" class="brand-link text-success ">
                TO-DO LİST
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="mt-2" style="border-bottom: 1px solid #4b545c;">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
-                            <a runat="server"  href="#" class="d-block nav-link">
-                                <i class="nav-icon far fa-user" style="color: white"></i>
-                                <p>Haşgeldin Kadir</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+               <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                       <i class="nav-icon far fa-user" style="color: white"></i>
+                    </div>
+                    <div class="info">
+                      <a href="#" class="d-block">
+                          <asp:Label ID="UserNameLabel" runat="server" Text=""></asp:Label> </a>
+                    </div>
+                  </div>
+                
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+                       
                         <li class="nav-item">
-                            <a runat="server"  href="pages/widgets.html" class="nav-link">
+                            <a runat="server"  href="#" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Kullanıcılar
@@ -92,7 +93,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a runat="server"  href="#" class="nav-link">
+                            <a runat="server" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     Yapılacaklar
@@ -101,13 +102,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a runat="server"  href="~/layout/top-nav.html" class="nav-link">
+                                    <a runat="server"  href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Listele</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a runat="server"  href="~/layout/top-nav.html" class="nav-link">
+                                    <a runat="server"  href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ekle</p>
                                     </a>
@@ -123,7 +124,7 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-         <form id="form1" runat="server">
+         
             <div class="content-wrapper">
                 <!-- Main content -->
                     <div class="container-fluid">
@@ -132,7 +133,7 @@
                     </div>
                     <!-- /.container-fluid -->
             </div>
-        </form>
+       
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <strong>Copyright &copy; 2020.</strong> Tüm haklar saklıdır.
@@ -145,8 +146,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->       
-
-   
+</form>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
@@ -182,5 +182,7 @@
     <script src="Template_Folder/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="Template_Folder/dist/js/pages/dashboard.js"></script>
+    <!-- ToAstr -->
+    <script src="Template_Folder/plugins/toastr/toastr.min.js"></script>
 </body>
 </html>

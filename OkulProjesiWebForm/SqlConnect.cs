@@ -13,5 +13,11 @@ namespace OkulProjesiWebForm
             connect.Open();
             return connect;
         }
+        public SqlConnection disconnection()
+        {
+            SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB; Initial Catalog=ToDoList; integrated security=true;");
+            connect.Close();
+            return connect;
+        }
     }
 }

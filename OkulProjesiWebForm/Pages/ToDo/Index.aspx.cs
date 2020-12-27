@@ -11,7 +11,12 @@ namespace OkulProjesiWebForm.Pages.ToDo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
 
+            Label1.Text = Session["UserName"].ToString().ToUpper();
         }
     }
 }
