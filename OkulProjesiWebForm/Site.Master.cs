@@ -13,35 +13,37 @@ namespace OkulProjesiWebForm
        
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] != null) 
+            GirisCikis.Text = "Giriş yap";
+            if (Session["UID"] != null) 
             { 
-                UserNameLabel.Text = Session["UserName"].ToString().ToUpper(); 
+                UserNameLabel.Text = Session["UserName"].ToString().ToUpper();
+                GirisCikis.Text = "Çıkış yap";
             }
             
         }
-        protected void CikisLinkButton_Click(object sender, EventArgs e)
+        protected void GirisCikis_Click(object sender, EventArgs e)
         {
-            cikis();
+            if (Session["UID"] == null && Session["UserName"] == null)
+            {
+                giris();
+            }
+            else
+            {
+                cikis();
+            }
+            
         }
+
+        private void giris()
+        {
+            Response.Redirect("~/Pages/Account/Login.aspx");
+        }
+
         private void cikis()
         {
             Session["UID"] = null;
             Session["UserName"] = null;
-            Response.Redirect("~/Default.aspx");
+            Response.Redirect("~/Pages/Account/Login.aspx");
         }
     }
 }
-
-/*
-            SqlConnect conn = new SqlConnect();
-            using (SqlCommand query = new SqlCommand("select * from test", conn.connection()))
-            {
-                using (SqlDataReader read = query.ExecuteReader())
-                {
-                    while (read.Read())
-                    {
-                        label1.Text += read["soyad"].ToString();
-                    }
-                    conn.connection().Close();
-                }
-            }*/

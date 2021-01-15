@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="OkulProjesiWebForm.Pages.Account.Register" %>
+﻿<%@ Page Title="Kayıt" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="OkulProjesiWebForm.Pages.Account.Register" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -10,7 +10,7 @@
             <div class="card card-success">
                 <!-- Card Header -->
                 <div class="card-header">
-                    <h3 class="card-title">Kayıt sayfası</h3>
+                    <h3 class="card-title">Kayıt Sayfası</h3>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

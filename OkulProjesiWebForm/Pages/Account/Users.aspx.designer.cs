@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OkulProjesiWebForm
+namespace OkulProjesiWebForm.Pages.Account
 {
 
 
-    public partial class _Default
+    public partial class Users
     {
     }
 }

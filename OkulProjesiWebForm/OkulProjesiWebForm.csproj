@@ -123,8 +123,13 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Pages\Account\Login.aspx" />
     <Content Include="Pages\Account\Profile.aspx" />
     <Content Include="Pages\Account\Register.aspx" />
+    <Content Include="Pages\Account\Users.aspx" />
+    <Content Include="Pages\Contact.aspx" />
+    <Content Include="Pages\ToDo\AddToDo.aspx" />
+    <Content Include="Pages\ToDo\EditToDo.aspx" />
     <Content Include="Pages\ToDo\Index.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2066,6 +2071,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Account\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2079,6 +2091,34 @@
     </Compile>
     <Compile Include="Pages\Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ToDo\AddToDo.aspx.cs">
+      <DependentUpon>AddToDo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ToDo\AddToDo.aspx.designer.cs">
+      <DependentUpon>AddToDo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ToDo\EditToDo.aspx.cs">
+      <DependentUpon>EditToDo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ToDo\EditToDo.aspx.designer.cs">
+      <DependentUpon>EditToDo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ToDo\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -2106,7 +2146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Pages\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

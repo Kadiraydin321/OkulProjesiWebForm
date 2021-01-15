@@ -5,18 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace OkulProjesiWebForm.Pages.ToDo
+namespace OkulProjesiWebForm.Pages.Account
 {
-    public partial class Index : System.Web.UI.Page
+    public partial class Users : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UID"] == null)
             {
-                Response.Redirect("~/Pages/Account/Login");
+                Response.Redirect("~/Pages/Account/Login.aspx");
             }
-
-            Label1.Text = Session["UserName"].ToString().ToUpper();
         }
     }
 }
