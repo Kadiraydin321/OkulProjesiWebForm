@@ -122,6 +122,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="NoUser.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Pages\Account\Login.aspx" />
     <Content Include="Pages\Account\Profile.aspx" />
@@ -2070,6 +2071,13 @@
     <Compile Include="Functions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="NoUser.Master.cs">
+      <DependentUpon>NoUser.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoUser.Master.designer.cs">
+      <DependentUpon>NoUser.Master</DependentUpon>
     </Compile>
     <Compile Include="Pages\Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

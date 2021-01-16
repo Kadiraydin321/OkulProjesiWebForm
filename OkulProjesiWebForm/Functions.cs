@@ -4,11 +4,34 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Web.UI;
 
 namespace OkulProjesiWebForm
 {
     public class Functions
     {
+        public static void toastrGoster(Page page,int mesajTuru,String mesaj)
+        {
+            String script="";
+            if (mesajTuru == 0)
+            {
+                script  = "toastr.success('" + mesaj + "')";
+            }
+            else if (mesajTuru == 1)
+            {
+                script = "toastr.warning('" + mesaj + "')";
+            }
+            else if (mesajTuru == 2)
+            {
+                script = "toastr.error('" + mesaj + "')";
+            }
+            else if (mesajTuru == 3)
+            {
+                script = "toastr.info('" + mesaj + "')";
+            }
+
+            ScriptManager.RegisterStartupScript(page, typeof(Page), Guid.NewGuid().ToString(), script, true);
+        }
         public static string uretici()
         {
             Random rastgele = new Random();

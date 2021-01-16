@@ -14,7 +14,6 @@ namespace OkulProjesiWebForm.Pages.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
         protected void RegisterButton_Click(object sender, EventArgs e)
         {
@@ -39,13 +38,11 @@ namespace OkulProjesiWebForm.Pages.Account
                 try 
                 { 
                     command.ExecuteNonQuery();
-                    UyariMesaji.CssClass = "text-success";
-                    UyariMesaji.Text = "Başarılı bir şekilde kayıt edildi.";
+                    Functions.toastrGoster(this.Page,0, "Başarılı bir şekilde kayıt edildi.");
                 }
                 catch (SqlException)
                 {
-                    UyariMesaji.CssClass = "text-danger";
-                    UyariMesaji.Text = "Bu kullanıcı adı veya e posta ile önceden kayıt yapılmış.";
+                    Functions.toastrGoster(this.Page, 1, "Bu kullanıcı adı veya e posta ile önceden kayıt yapılmış.");
                 }
               
             }

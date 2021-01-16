@@ -1,23 +1,19 @@
-﻿<%@ Page Title="Kayıt" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="OkulProjesiWebForm.Pages.Account.Register" %>
+﻿<%@ Page Title="Kayıt" Language="C#" MasterPageFile="~/NoUser.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="OkulProjesiWebForm.Pages.Account.Register" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div style="height:40px;"></div>
     <div class="row">
         <div class="col"></div>
-        <div class="col-4">
+        <div class="col-md-4">
 
-            <div class="card card-success">
+            <div class="card card-success card-outline">
                 <!-- Card Header -->
                 <div class="card-header">
                     <h3 class="card-title">Kayıt Sayfası</h3>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="form-group">
-                        <asp:Label ID="UyariMesaji" runat="server" Text=""></asp:Label>
-                    </div>
-
                     <div class="form-group">
                         <asp:TextBox ID="UserNameTextBox" runat="server" CssClass="form-control" placeholder="Kullanıcı adı"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Kullanıcı adı alanı boş bırakılamaz." CssClass="text-warning" ControlToValidate="UserNameTextBox"></asp:RequiredFieldValidator>
@@ -45,9 +41,8 @@
                </div>
                 <!-- Card Footer -->
                  <div class="card-footer">
-                     <div class="form-group">
-                        <asp:Button ID="RegisterButton" CssClass="btn btn-success" runat="server" Text="Kayıt ol" OnClick="RegisterButton_Click" />
-                    </div>
+                    <asp:Button ID="RegisterButton" CssClass="btn btn-success" runat="server" Text="Kayıt Ol" OnClick="RegisterButton_Click" />
+                     <a runat="server" href="~/Pages/Account/Login" class="btn btn-outline-secondary float-right">Giriş Yap</a>
                  </div>
            </div>
         </div>

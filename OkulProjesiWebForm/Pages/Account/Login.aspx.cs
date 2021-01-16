@@ -47,7 +47,7 @@ namespace OkulProjesiWebForm.Pages.Account
                 }
                 else
                 {
-                    UyariMesaji.Text = "Kullanıcı adı veya şifre yanlış.";
+                    Functions.toastrGoster(this.Page,2, "Giriş başarısız, kullanıcı adı veya şifre yanlış.");
                 }
             }
             sql.disconnection();

@@ -4,27 +4,24 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 
 namespace OkulProjesiWebForm
 {
-    public partial class SiteMaster : MasterPage
+    public partial class NoUser : System.Web.UI.MasterPage
     {
-       
         protected void Page_Load(object sender, EventArgs e)
         {
-            GirisCikis1.Text = "Giriş Yap";
-            
-            if (Session["UID"] != null) 
-            { 
-                UserNameLabel.Text = Session["UserName"].ToString().ToUpper();
-                GirisCikis1.Text = "Çıkış Yap";
-            }
-            if (Session["UserName"].ToString() != "admin") 
+            GirisCikis.Text = "Giriş Yap";
+
+            if (Session["UID"] != null)
             {
-                AdminPanel.Visible = false;
+                GirisCikis.Text = "Çıkış Yap";
             }
-            
+            string path = HttpContext.Current.Request.Url.AbsolutePath;
+            if (path == "/Pages/Account/Login" || path == "/Pages/Account/Register")
+            {
+                GirisCikis.Visible = false;
+            }
         }
         protected void GirisCikis_Click(object sender, EventArgs e)
         {

@@ -6,18 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> | To-Do List</title>
 
-    <!-- ASP.Net Scripts -->
-    <script src="Scripts/WebForms/WebForms.js"></script>
-    <script src="Scripts/WebForms/WebUIValidation.js"></script>
-    <script src="Scripts/WebForms/MenuStandards.js"></script>
-    <script src="Scripts/WebForms/GridView.js"></script>
-    <script src="Scripts/WebForms/DetailsView.js"></script>
-    <script src="Scripts/WebForms/TreeView.js"></script>
-    <script src="Scripts/WebForms/WebParts.js"></script>
-    <script src="Scripts/WebForms/Focus.js"></script>
-
-   
-
      <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -38,10 +26,21 @@
     <link rel="stylesheet" href="~/Template_Folder/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="~/Template_Folder/plugins/summernote/summernote-bs4.min.css">
+    <!-- SweetAlert2 Toastr -->
+    <link rel="stylesheet" href="~/Template_Folder/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Tostr -->
+    <link rel="stylesheet" href="~/Template_Folder/plugins/toastr/toastr.min.css">
+
      <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+     <!-- jQuery -->
+    <script src="<%=ResolveClientUrl("~/Template_Folder/plugins/jquery/jquery.min.js") %>"></script>
+    <!-- Toastr -->
+    <script src="<%=ResolveClientUrl("~/Template_Folder/plugins/sweetalert2/sweetalert2.min.js") %>"></script>
+    <script src="<%=ResolveClientUrl("~/Template_Folder/plugins/toastr/toastr.min.js") %>"></script>
+
     <form id="form1" runat="server">
      <div class="wrapper">
 
@@ -60,12 +59,13 @@
                   </li>
             </ul>
             <!-- Right navbar links -->
+            <!--
             <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
                 <li class="nav-item d-none d-sm-inline-block">
-                        <asp:LinkButton ID="GirisCikis" OnClick="GirisCikis_Click" CssClass="nav-link btn btn-outline-success" runat="server" CausesValidation="false"></asp:LinkButton>
+                    <a class="nav-link"></a>
                 </li>
             </ul>
+            -->
         </nav>
         <!-- /.navbar -->
 
@@ -79,40 +79,46 @@
                         <li class="nav-item">
                             <a runat="server"  href="~/" class="d-block nav-link">
                                 <i class="nav-icon fas fa-home" style="color: white"></i>
-                                <p class="text-success">TO-DO LİST</p>
+                                <p class="brand-text text-success">TO-DO LİST</p>
                             </a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Sidebar user panel (optional) -->
+                <!-- Sidebar profil paneli (optional) -->
                 <div class="mt-2" style="border-bottom: 1px solid #4b545c;">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
                             <a href="~/Pages/Account/Profile" runat="server" class="d-block nav-link">
                                 <i class="nav-icon far fa-user" style="color: white"></i>
-                                <p><asp:Label ID="UserNameLabel" CssClass="text-info" runat="server" Text="Profil"></asp:Label></p>
+                                <p><asp:Label ID="UserNameLabel" runat="server" Text="Profil"></asp:Label></p>
                             </a>
                         </li>
                     </ul>
                 </div>
 
+                <!-- Burası admine özel olacak -->
+                <asp:Panel ID="AdminPanel" runat="server">
+                    <nav class="mt-2" style="border-bottom: 1px solid #4b545c;">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            
+                            <li class="nav-item">
+                                <a runat="server"  href="~/Pages/Account/Users"  class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Kullanıcılar
+                                    </p>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </asp:Panel>
+
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                       
-                        <!-- Burası admine özel olacak -->
-                        <li class="nav-item">
-                            <a runat="server"  href="~/Pages/Account/Users"  class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Kullanıcılar
-                                </p>
-                            </a>
-                        </li>
-
+                        <!-- Burayı kullanıcılar görebilecek -->
                         <li class="nav-item">
                             <a runat="server"  href="~/Pages/ToDo/Index"  class="nav-link">
                                 <i class="nav-icon fas fa-list"></i>
@@ -120,6 +126,15 @@
                                     To-Do List
                                 </p>
                             </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <asp:LinkButton ID="LinkButton1" OnClick="GirisCikis_Click" CssClass="nav-link" CausesValidation="false" runat="server">
+                                <i id="logIcon" class="nav-icon fas fa-sign-in-alt"></i>
+                                <p>
+                                    <asp:Label ID="GirisCikis1" runat="server" Text=""></asp:Label>
+                                </p>
+                            </asp:LinkButton>
                         </li>
 
                     </ul>
@@ -158,8 +173,7 @@
         $.widget.bridge('uibutton', $.ui.button)
     </script>
 
-    <!-- jQuery -->
-    <script src="<%=ResolveClientUrl("~/Template_Folder/plugins/jquery/jquery.min.js") %>"></script>
+   
     <!-- jQuery UI 1.11.4 -->
     <script src="<%=ResolveClientUrl("~/Template_Folder/plugins/jquery-ui/jquery-ui.min.js") %>"></script>
     <!-- Bootstrap 4 -->
@@ -188,7 +202,16 @@
     <script src="<%=ResolveClientUrl("~/Template_Folder/dist/js/demo.js") %>"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="<%=ResolveClientUrl("~/Template_Folder/dist/js/Pages/dashboard.js") %>"></script>
-    <!-- ToAstr -->
-    <script src="<%=ResolveClientUrl("~/Template_Folder/plugins/toastr/toastr.min.js") %>"></script>
+    <script>
+        var label = document.getElementById("GirisCikis1").textContent;
+        if (label == "Giriş Yap") {
+            document.getElementById("logIcon").classList.remove("fa-sign-out-alt");
+            document.getElementById("logIcon").classList.add("fa-sign-in-alt");
+        }
+        else {
+            document.getElementById("logIcon").classList.remove("fa-sign-in-alt");
+            document.getElementById("logIcon").classList.add("fa-sign-out-alt");
+        }
+    </script>
 </body>
 </html>

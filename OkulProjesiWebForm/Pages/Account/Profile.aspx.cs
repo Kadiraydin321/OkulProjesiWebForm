@@ -19,6 +19,10 @@ namespace OkulProjesiWebForm.Pages.Account
             }
             profilCek();
         }
+        protected void ProfileUpdateButton_Click(object sender, EventArgs e)
+        {
+            profilGuncelle();
+        }
         private void profilCek()
         {
             SqlConnect sql = new SqlConnect();
@@ -37,11 +41,33 @@ namespace OkulProjesiWebForm.Pages.Account
                 }
                 else
                 {
-                    Response.Redirect("./Login.aspx");
+                    Response.Redirect("~/Pages/Account/Login.aspx");
                 }
             }
             sql.disconnection();
         }
 
+        private void profilGuncelle()
+        {
+            SqlConnect sql = new SqlConnect();
+            String query = "UPDATE Users SET " +
+                "UserName='" + UserNameTextBox.Text + "'," +
+                "Name='" + NameTextBox.Text + "'," +
+                "Surname='" + SurnameTextBox.Text + "'," +
+                "Email='" + EmailTextBox.Text + "'" +
+                " WHERE UID='" + Session["UID"].ToString() + "'";
+
+
+            //AND Password='"+ PasswordTextBox.Text + "'
+            // update Users set UserName='deneme' where UID='"+Session["UID"].ToString()+ "' and Password='" + PasswordTextBox.Text + "'
+
+            using (SqlCommand command = new SqlCommand(query, sql.connection()))
+            {
+                command.ExecuteNonQuery();
+            }
+            sql.disconnection();
+        }
+
+        
     }
 }

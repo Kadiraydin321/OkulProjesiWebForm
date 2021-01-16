@@ -1,10 +1,10 @@
-﻿<%@ Page Title="İletişim" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="OkulProjesiWebForm.Pages.Contact" %>
+﻿<%@ Page Title="İletişim" Language="C#" MasterPageFile="~/NoUser.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="OkulProjesiWebForm.Pages.Contact" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div style="height:40px;"></div>
     <div class="container">
-        <div class="card card-success">
+        <div class="card card-warning card-outline">
             <!-- Card Header -->
             <div class="card-header">
                 <h3 class="card-title">İletişim Sayfası</h3>

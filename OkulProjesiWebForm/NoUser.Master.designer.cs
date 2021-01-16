@@ -11,7 +11,7 @@ namespace OkulProjesiWebForm
 {
 
 
-    public partial class SiteMaster
+    public partial class NoUser
     {
 
         /// <summary>
@@ -33,40 +33,13 @@ namespace OkulProjesiWebForm
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// UserNameLabel control.
+        /// GirisCikis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserNameLabel;
-
-        /// <summary>
-        /// AdminPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel AdminPanel;
-
-        /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-
-        /// <summary>
-        /// GirisCikis1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label GirisCikis1;
+        protected global::System.Web.UI.WebControls.LinkButton GirisCikis;
 
         /// <summary>
         /// MainContent control.
