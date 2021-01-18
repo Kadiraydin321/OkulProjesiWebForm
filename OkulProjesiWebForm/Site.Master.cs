@@ -13,19 +13,19 @@ namespace OkulProjesiWebForm
        
         protected void Page_Load(object sender, EventArgs e)
         {
-            GirisCikis1.Text = "Giriş Yap";
-            
-            if (Session["UID"] != null) 
-            { 
-                UserNameLabel.Text = Session["UserName"].ToString().ToUpper();
-                GirisCikis1.Text = "Çıkış Yap";
+            if (Session["UID"] == null || Session["UserName"] == null)
+            {
+                Response.Redirect("~/Pages/Account/Login.aspx");
             }
-            if (Session["UserName"].ToString() != "admin") 
+
+            UserNameLabel.Text = Session["UserName"].ToString().ToUpper();
+
+            if (Session["UserName"].ToString() != "admin")
             {
                 AdminPanel.Visible = false;
             }
-            
         }
+
         protected void GirisCikis_Click(object sender, EventArgs e)
         {
             if (Session["UID"] == null && Session["UserName"] == null)

@@ -9,19 +9,17 @@ namespace OkulProjesiWebForm
 {
     public partial class NoUser : System.Web.UI.MasterPage
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            //string path = HttpContext.Current.Request.Url.AbsolutePath;
             GirisCikis.Text = "Giriş Yap";
 
             if (Session["UID"] != null)
             {
                 GirisCikis.Text = "Çıkış Yap";
             }
-            string path = HttpContext.Current.Request.Url.AbsolutePath;
-            if (path == "/Pages/Account/Login" || path == "/Pages/Account/Register")
-            {
-                GirisCikis.Visible = false;
-            }
+            
         }
         protected void GirisCikis_Click(object sender, EventArgs e)
         {

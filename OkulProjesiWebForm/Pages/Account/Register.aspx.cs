@@ -21,7 +21,7 @@ namespace OkulProjesiWebForm.Pages.Account
         }
         private void register()
         {
-            String UID = Functions.MD5Sifrele(Functions.uretici()).Substring(0, 15).ToUpper();
+            String UID = Functions.MD5Sifrele(Functions.uretici());
 
             SqlConnect sql = new SqlConnect();
             String query = "insert into Users(UID,UserName,Name,Surname,Email,Password)" +
@@ -31,7 +31,7 @@ namespace OkulProjesiWebForm.Pages.Account
                 "'" + NameTextBox.Text + "'," +
                 "'" + SurnameTextBox.Text + "'," +
                 "'" + EmailTextBox.Text + "'," +
-                "'" + PasswordTextBox.Text + "')";
+                "'" + Functions.MD5Sifrele(PasswordTextBox.Text) + "')";
              
             using (SqlCommand command = new SqlCommand(query, sql.connection()))
             {

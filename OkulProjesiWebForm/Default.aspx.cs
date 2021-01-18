@@ -12,5 +12,17 @@ namespace OkulProjesiWebForm
         {
 
         }
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Session["UID"] != null)
+            {
+                this.MasterPageFile = "~/Site.Master";
+            }
+            else if (Session["UID"] == null)
+            {
+
+                this.MasterPageFile = "~/NoUser.Master";
+            }
+        }
     }
 }

@@ -125,6 +125,7 @@
     <Content Include="NoUser.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Pages\Account\Login.aspx" />
+    <Content Include="Pages\Account\NewPassword.aspx" />
     <Content Include="Pages\Account\Profile.aspx" />
     <Content Include="Pages\Account\Register.aspx" />
     <Content Include="Pages\Account\Users.aspx" />
@@ -2042,6 +2043,7 @@
     <Content Include="Template_Folder\plugins\sweetalert2\sweetalert2.js" />
     <Content Include="Template_Folder\plugins\sweetalert2\sweetalert2.min.css" />
     <Content Include="Template_Folder\plugins\sweetalert2\sweetalert2.min.js" />
+    <Content Include="Template_Folder\plugins\sweetalert2\toastTanim.js" />
     <Content Include="Template_Folder\plugins\tempusdominus-bootstrap-4\css\tempusdominus-bootstrap-4.css" />
     <Content Include="Template_Folder\plugins\tempusdominus-bootstrap-4\css\tempusdominus-bootstrap-4.min.css" />
     <Content Include="Template_Folder\plugins\tempusdominus-bootstrap-4\js\tempusdominus-bootstrap-4.js" />
@@ -2085,6 +2087,13 @@
     </Compile>
     <Compile Include="Pages\Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\NewPassword.aspx.cs">
+      <DependentUpon>NewPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\NewPassword.aspx.designer.cs">
+      <DependentUpon>NewPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Account\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

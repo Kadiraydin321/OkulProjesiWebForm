@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,28 +12,31 @@ namespace OkulProjesiWebForm
 {
     public class Functions
     {
+
         public static void toastrGoster(Page page,int mesajTuru,String mesaj)
         {
-            String script="";
+            String script = "";
+
             if (mesajTuru == 0)
             {
-                script  = "toastr.success('" + mesaj + "')";
+                script  = "Toast.fire({icon: 'success',title: '"+mesaj+"'})";
             }
             else if (mesajTuru == 1)
             {
-                script = "toastr.warning('" + mesaj + "')";
+                script = "Toast.fire({icon: 'warning',title: '" + mesaj + "'})";
             }
             else if (mesajTuru == 2)
             {
-                script = "toastr.error('" + mesaj + "')";
+                script = "Toast.fire({icon: 'error',title: '" + mesaj + "'})";
             }
             else if (mesajTuru == 3)
             {
-                script = "toastr.info('" + mesaj + "')";
+                script = "Toast.fire({icon: 'info',title: '" + mesaj + "'})";
             }
 
             ScriptManager.RegisterStartupScript(page, typeof(Page), Guid.NewGuid().ToString(), script, true);
         }
+
         public static string uretici()
         {
             Random rastgele = new Random();
@@ -64,7 +69,7 @@ namespace OkulProjesiWebForm
             }
 
             //hexadecimal(onaltılık) stringi geri döndürdük.
-            return sb.ToString();
+            return sb.ToString().Substring(0,15).ToUpper();
         }
     }
 }

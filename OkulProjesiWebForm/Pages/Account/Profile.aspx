@@ -17,28 +17,30 @@
                     </div>
 
                     <div class="form-group">
-                            <asp:Label ID="Label2" runat="server" Text="Ad"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text="Ad"></asp:Label>
                         <asp:TextBox ID="NameTextBox" CssClass="form-control text-gray" runat="server"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
-                            <asp:Label ID="Label3" runat="server" Text="Soyad"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text="Soyad"></asp:Label>
                         <asp:TextBox ID="SurnameTextBox" CssClass="form-control text-gray" runat="server"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
-                            <asp:Label ID="Label4" runat="server" Text="Email"></asp:Label>
+                        <asp:Label ID="Label4" runat="server" Text="Email"></asp:Label>
                         <asp:TextBox ID="EmailTextBox" CssClass="form-control text-gray" runat="server"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
                         <asp:Label ID="Label5" runat="server" Text="Şifre"></asp:Label>
                         <asp:TextBox ID="PasswordTextBox" TextMode="Password" placeholder="Profili güncellemek için şifreyi giriniz." CssClass="form-control text-gray" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="PasswordTextBox" CssClass="text-danger" ErrorMessage="Profili güncellemek için şifreyi giriniz."></asp:RequiredFieldValidator>
                     </div>
                 </div>
              <!-- Footer -->
                 <div class="card-footer">
-                    <asp:Button ID="ProfileUpdateButton" runat="server" CssClass="btn btn-outline-primary disabled" OnClick="ProfileUpdateButton_Click" Text="Güncelle" />
+                    <asp:Button ID="ProfileUpdateButton" runat="server" CssClass="btn btn-outline-primary" OnClick="ProfileUpdateButton_Click" Text="Güncelle" />
+                    <asp:Button ID="SifreDegistir" runat="server" CssClass="btn btn-outline-secondary float-right" CausesValidation="false" OnClick="SifreDegistir_Click" Text="Şifre Değiştir" />
                 </div>
        </div>
     </div>

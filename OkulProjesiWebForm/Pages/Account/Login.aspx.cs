@@ -32,7 +32,7 @@ namespace OkulProjesiWebForm.Pages.Account
         private void login()
         {
             SqlConnect sql = new SqlConnect();
-            using (SqlCommand query = new SqlCommand("select * from Users where UserName='" + UserNameTextBox.Text + "' and Password='" + PasswordTextBox.Text + "'", sql.connection()))
+            using (SqlCommand query = new SqlCommand("select * from Users where UserName='" + UserNameTextBox.Text + "' and Password='" + Functions.MD5Sifrele(PasswordTextBox.Text) + "'", sql.connection()))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(query);
                 DataTable dt = new DataTable();
@@ -43,6 +43,10 @@ namespace OkulProjesiWebForm.Pages.Account
                     cerezKaydet();
                     Session["UID"] = dt.Rows[0][0].ToString();
                     Session["UserName"] = dt.Rows[0][1].ToString();
+                    Session["Name"] = dt.Rows[0][2].ToString();
+                    Session["Surname"] = dt.Rows[0][3].ToString();
+                    Session["Email"] = dt.Rows[0][4].ToString();
+                    Session["Password"] = dt.Rows[0][5].ToString();
                     Response.Redirect("../ToDo/Index.aspx");
                 }
                 else

@@ -13,7 +13,7 @@ namespace OkulProjesiWebForm.Pages.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UID"] == null)
+            if (Session["UID"] == null || Session["UserName"] == null)
             {
                 Response.Redirect("~/Pages/Account/Login.aspx");
             }
@@ -25,49 +25,53 @@ namespace OkulProjesiWebForm.Pages.Account
         }
         private void profilCek()
         {
-            SqlConnect sql = new SqlConnect();
-            using (SqlCommand query = new SqlCommand("Select * from Users where UID='"+Session["UID"]+"'", sql.connection()))
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter(query);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-
-                if (dt.Rows.Count != 0)
-                {
-                    UserNameTextBox.Text = dt.Rows[0][1].ToString();
-                    NameTextBox.Text = dt.Rows[0][2].ToString();
-                    SurnameTextBox.Text = dt.Rows[0][3].ToString();
-                    EmailTextBox.Text = dt.Rows[0][4].ToString();
-                }
-                else
-                {
-                    Response.Redirect("~/Pages/Account/Login.aspx");
-                }
-            }
-            sql.disconnection();
+            UserNameTextBox.Attributes["Value"] = Session["UserName"].ToString();
+            NameTextBox.Attributes["Value"] = Session["Name"].ToString();
+            SurnameTextBox.Attributes["Value"] = Session["Surname"].ToString();
+            EmailTextBox.Attributes["Value"] = Session["Email"].ToString();
         }
 
         private void profilGuncelle()
         {
-            SqlConnect sql = new SqlConnect();
-            String query = "UPDATE Users SET " +
-                "UserName='" + UserNameTextBox.Text + "'," +
-                "Name='" + NameTextBox.Text + "'," +
-                "Surname='" + SurnameTextBox.Text + "'," +
-                "Email='" + EmailTextBox.Text + "'" +
-                " WHERE UID='" + Session["UID"].ToString() + "'";
-
-
-            //AND Password='"+ PasswordTextBox.Text + "'
-            // update Users set UserName='deneme' where UID='"+Session["UID"].ToString()+ "' and Password='" + PasswordTextBox.Text + "'
-
-            using (SqlCommand command = new SqlCommand(query, sql.connection()))
+            try
             {
-                command.ExecuteNonQuery();
+                SqlConnect sql = new SqlConnect();
+                String query = "UPDATE Users SET " +
+                    "UserName='" + UserNameTextBox.Text + "'," +
+                    "Name='" + NameTextBox.Text + "'," +
+                    "Surname='" + SurnameTextBox.Text + "'," +
+                    "Email='" + EmailTextBox.Text + "'" +
+                    " WHERE UID='" + Session["UID"].ToString() + "' AND Password='" + Functions.MD5Sifrele(PasswordTextBox.Text) + "'";
+
+                if (Session["Password"].ToString() == Functions.MD5Sifrele(PasswordTextBox.Text))
+                {
+                    using (SqlCommand command = new SqlCommand(query, sql.connection()))
+                    {
+                        command.ExecuteNonQuery();
+                        sql.disconnection();
+
+                        // Bilgiler ile beraber Sessionlar da güncelleniyor.
+                        Session["UserName"] = UserNameTextBox.Text;
+                        Session["Name"] = NameTextBox.Text;
+                        Session["Surname"] = SurnameTextBox.Text;
+                        Session["Email"] = EmailTextBox.Text;
+                    }
+                    Functions.toastrGoster(this.Page, 0, "    Başarılı bir şekilde güncellendi.");
+                }
+                else
+                {
+                    Functions.toastrGoster(this.Page, 2, "    Hatalı şifre girdiniz.");
+                }
             }
-            sql.disconnection();
+            catch (SqlException)
+            {
+                Functions.toastrGoster(this.Page, 1, "Bu kullanıcı adı veya e posta ile önceden kayıt yapılmış.");
+            }
         }
 
-        
+        protected void SifreDegistir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Account/NewPassword.aspx");
+        }
     }
 }

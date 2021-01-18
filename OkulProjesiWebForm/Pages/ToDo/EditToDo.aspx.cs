@@ -11,7 +11,7 @@ namespace OkulProjesiWebForm.Pages.ToDo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UID"] == null)
+            if (Session["UID"] == null || Session["UserName"] == null)
             {
                 Response.Redirect("~/Pages/Account/Login.aspx");
             }
