@@ -18,6 +18,10 @@ namespace OkulProjesiWebForm.Pages.Account
             {
                 Response.Redirect("~/Pages/Account/Login.aspx");
             }
+            else if (Session["UserName"].ToString()!="admin")
+            {
+                Response.Redirect("~/Pages/ToDo/Index");
+            }
 
             if (!IsPostBack)
             {

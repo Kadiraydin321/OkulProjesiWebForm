@@ -53,7 +53,7 @@
             <div class="container">
                 <div class="navbar-header">
                     <a href="~/" runat="server" class="navbar-brand">
-                        <span class="brand-text font-weight-light text-success">TO-DO LIST</span>
+                         <img src="~/Template_Folder/logo.png" alt="Logo" class="brand-image" style="margin-left:10px;" height="32" width="100" runat="server">
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">

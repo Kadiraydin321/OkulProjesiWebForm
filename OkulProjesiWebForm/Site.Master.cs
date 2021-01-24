@@ -26,18 +26,11 @@ namespace OkulProjesiWebForm
             }
         }
 
-        protected void GirisCikis_Click(object sender, EventArgs e)
+        protected void Cikis_Click(object sender, EventArgs e)
         {
-            if (Session["UID"] == null && Session["UserName"] == null)
-            {
-                Response.Redirect("~/Pages/Account/Login.aspx");
-            }
-            else
-            {
-                Session["UID"] = null;
-                Session["UserName"] = null;
-                Response.Redirect("~/Pages/Account/Login.aspx");
-            }
+            Session["UID"] = null;
+            Session["UserName"] = null;
+            Response.Redirect("~/Pages/Account/Login.aspx");
         }
     }
 }

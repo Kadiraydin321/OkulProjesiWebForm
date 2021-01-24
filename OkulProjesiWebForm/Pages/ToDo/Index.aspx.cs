@@ -18,7 +18,11 @@ namespace OkulProjesiWebForm.Pages.ToDo
             {
                 Response.Redirect("~/Pages/Account/Login.aspx");
             }
+            ViewTable();
+        }
 
+        private void ViewTable()
+        {
             if (!IsPostBack)
             {
                 DataTable dt = GetData();
@@ -28,16 +32,10 @@ namespace OkulProjesiWebForm.Pages.ToDo
                 html.Append("<thead>");
                 html.Append("<tr role='row'>");
                 html.Append("<th>#</th>");
-                foreach (DataColumn column in dt.Columns)
-                {
-                    if (column.ColumnName == "ID" || column.ColumnName=="UserID")
-                    {
-                        continue;
-                    }
-                    html.Append("<th>");
-                    html.Append(column.ColumnName);
-                    html.Append("</th>");
-                }
+                html.Append("<th>Konu Başlığı</th>");
+                html.Append("<th>Konu Metni</th>");
+                html.Append("<th>Tarih</th>");
+                html.Append("<th>Durum</th>");
                 html.Append("<th></th>");
                 html.Append("</tr>");
                 html.Append("</thead>");
@@ -47,16 +45,51 @@ namespace OkulProjesiWebForm.Pages.ToDo
                 foreach (DataRow row in dt.Rows)
                 {
                     html.Append("<tr role='row'>");
-                    html.Append("<td>"+artis.ToString()+"</td>");
+                    html.Append("<td>" + artis.ToString() + "</td>");
                     foreach (DataColumn column in dt.Columns)
                     {
                         if (column.ColumnName == "ID" || column.ColumnName == "UserID")
                         {
                             continue;
                         }
-                        html.Append("<td>");
-                        html.Append(row[column.ColumnName]);
-                        html.Append("</td>");
+                        else if (column.ColumnName == "Date")
+                        {
+                            html.Append("<td>");
+                            html.Append(row[column.ColumnName].ToString().Substring(0, 10));
+                            html.Append("</td>");
+                        }
+                        else if (column.ColumnName == "SubjectTitle")
+                        {
+                            html.Append("<td>");
+                            if (row[column.ColumnName].ToString().Length < 40)
+                            {
+                                html.Append(row[column.ColumnName]);
+                            }
+                            else
+                            {
+                                html.Append(row[column.ColumnName].ToString().Substring(0, 37) + "...");
+                            }
+                            html.Append("</td>");
+                        }
+                        else if (column.ColumnName == "SubjectText")
+                        {
+                            html.Append("<td>");
+                            if (row[column.ColumnName].ToString().Length < 50)
+                            {
+                                html.Append(row[column.ColumnName]);
+                            }
+                            else
+                            {
+                                html.Append(row[column.ColumnName].ToString().Substring(0, 47) + "...");
+                            }
+                            html.Append("</td>");
+                        }
+                        else
+                        {
+                            html.Append("<td>");
+                            html.Append(row[column.ColumnName]);
+                            html.Append("</td>");
+                        }
                     }
                     html.Append("<td></td>");
                     html.Append("</tr>");
@@ -71,7 +104,7 @@ namespace OkulProjesiWebForm.Pages.ToDo
         private DataTable GetData()
         {
             SqlConnect sql = new SqlConnect();
-            using (SqlCommand query = new SqlCommand("select * from ToDoList where UserID='"+Session["UID"].ToString()+"'", sql.connection()))
+            using (SqlCommand query = new SqlCommand("Select * From ToDoList Where UserID='"+Session["UID"].ToString()+"' ORDER BY Date ASC", sql.connection()))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(query);
                 DataTable dt = new DataTable();

@@ -15,6 +15,15 @@ namespace OkulProjesiWebForm.Pages.ToDo
     {
 
         /// <summary>
+        /// NewToDo1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton NewToDo1;
+
+        /// <summary>
         /// placeholder control.
         /// </summary>
         /// <remarks>
@@ -22,5 +31,23 @@ namespace OkulProjesiWebForm.Pages.ToDo
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder placeholder;
+
+        /// <summary>
+        /// NullTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel NullTable;
+
+        /// <summary>
+        /// NewToDo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton NewToDo;
     }
 }

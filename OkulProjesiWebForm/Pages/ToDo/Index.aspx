@@ -9,19 +9,30 @@
         <div class="card-header">
         <h3 class="card-title">To-Do List</h3>
         <div class="card-tools">
-            <ul class="pagination pagination-sm float-right">
-            <li class="page-item"><a class="page-link" href="#">«</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">»</a></li>
-            </ul>
+            <h4>
+                <asp:LinkButton ID="NewToDo1" runat="server" CausesValidation="false" CssClass="text-success" PostBackUrl="~/Pages/ToDo/AddToDo.aspx">
+                    <i class="fas fa-plus-circle"></i>
+                </asp:LinkButton>
+            </h4>
+            
         </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body p-0">
-        <asp:PlaceHolder ID="placeholder" runat="server" />
+            <asp:PlaceHolder ID="placeholder" runat="server" />
         </div>
         <!-- /.card-body -->
     </div>
+    <asp:Panel ID="NullTable"  runat="server">
+        <div class="text-center">
+            <h4 class="text-black text-center">
+                Hadi yeni bir to-do ekleyelim. 
+            </h4>
+            <h1>
+                <asp:LinkButton ID="NewToDo" runat="server" CausesValidation="false" CssClass="text-success" PostBackUrl="~/Pages/ToDo/AddToDo.aspx">
+                    <i class="fas fa-plus-circle"></i>
+                </asp:LinkButton>
+            </h1>
+        </div>
+    </asp:Panel>
 </asp:Content>

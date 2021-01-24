@@ -2056,6 +2056,7 @@
     <Content Include="Template_Folder\plugins\uplot\uPlot.iife.js" />
     <Content Include="Template_Folder\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Template_Folder\plugins\uplot\uPlot.min.css" />
+    <Content Include="Template_Folder\logo.png" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
