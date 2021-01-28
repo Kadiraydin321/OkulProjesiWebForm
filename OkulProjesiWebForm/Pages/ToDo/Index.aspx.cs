@@ -42,13 +42,19 @@ namespace OkulProjesiWebForm.Pages.ToDo
                 html.Append("<tbody>");
 
                 int artis = 1;
+                int itemID;
                 foreach (DataRow row in dt.Rows)
                 {
                     html.Append("<tr role='row'>");
                     html.Append("<td>" + artis.ToString() + "</td>");
                     foreach (DataColumn column in dt.Columns)
                     {
-                        if (column.ColumnName == "ID" || column.ColumnName == "UserID")
+                        if (column.ColumnName == "ID")
+                        {
+                            itemID = Convert.ToInt32(row[column.ColumnName]);
+                            continue;
+                        }
+                        else if (column.ColumnName == "UserID")
                         {
                             continue;
                         }
@@ -91,7 +97,7 @@ namespace OkulProjesiWebForm.Pages.ToDo
                             html.Append("</td>");
                         }
                     }
-                    html.Append("<td></td>");
+                    html.Append("<td><asp:Button ID='SilButton"+artis.ToString()+ "' OnClick='SilButton_Click' runat='server' Text='Sil' CssClass='btn btn-outline-danger' CommandName='DeleteCommand' CommandArgument='<%#Eval(itemID) %>' /></td>");
                     html.Append("</tr>");
                     artis++;
                 }
@@ -104,14 +110,25 @@ namespace OkulProjesiWebForm.Pages.ToDo
         private DataTable GetData()
         {
             SqlConnect sql = new SqlConnect();
-            using (SqlCommand query = new SqlCommand("Select * From ToDoList Where UserID='"+Session["UID"].ToString()+"' ORDER BY Date ASC", sql.connection()))
+            String sorgu = "Select * From ToDoList Where UserID='" + Session["UID"].ToString() + "' ORDER BY Date DESC";
+            using (SqlCommand komut = new SqlCommand(sorgu, sql.connection()))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter(query);
+                SqlDataAdapter adapter = new SqlDataAdapter(komut);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
                 return dt;
             }
             sql.disconnection();
+        }
+
+        private void DeleteData(int itemID)
+        {
+
+        }
+
+        protected void SilButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
