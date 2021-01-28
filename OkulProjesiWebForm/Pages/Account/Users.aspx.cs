@@ -25,62 +25,42 @@ namespace OkulProjesiWebForm.Pages.Account
 
             if (!IsPostBack)
             {
-                DataTable dt = GetData();
-                StringBuilder html = new StringBuilder();
-
-                html.Append("<table id='UserTable' class='table table-dark table-hover'>");
-                html.Append("<thead>");
-                html.Append("<tr role='row'>");
-                html.Append("<th>#</th>");
-                foreach (DataColumn column in dt.Columns)
-                {
-                    if (column.ColumnName == "Password")
-                    {
-                        continue;
-                    }
-                    html.Append("<th>");
-                    html.Append(column.ColumnName);
-                    html.Append("</th>");
-                }
-                html.Append("</tr>");
-                html.Append("</thead>");
-                html.Append("<tbody>");
-
-                int artis = 1;
-                foreach (DataRow row in dt.Rows)
-                {
-                    html.Append("<tr role='row'>");
-                    html.Append("<td>" + artis.ToString() + "</td>");
-                    foreach (DataColumn column in dt.Columns)
-                    {
-                        if (column.ColumnName == "Password")
-                        {
-                            continue;
-                        }
-                        html.Append("<td>");
-                        html.Append(row[column.ColumnName]);
-                        html.Append("</td>");
-                    }
-                    html.Append("</tr>");
-                    artis++;
-                }
-                html.Append("</tbody>");
-                html.Append("</table>");
-
-                placeholder.Controls.Add(new Literal { Text = html.ToString() });
+                GetData();
             }
         }
-        private DataTable GetData()
+        private void GetData()
         {
             SqlConnect sql = new SqlConnect();
-            using (SqlCommand query = new SqlCommand("select * from Users", sql.connection()))
+            String sorgu = "select * from Users Order By Name";
+            using (SqlCommand komut = new SqlCommand(sorgu, sql.connection()))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter(query);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                return dt;
+                SqlDataAdapter adapter = new SqlDataAdapter(komut);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                UserTable.DataSource = ds;
+                UserTable.DataBind();
             }
             sql.disconnection();
+        }
+        protected void UserTable_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DeleteCommand")
+            {
+                SqlConnect sql = new SqlConnect();
+                String sorgu = "Delete From Users Where UID='" + e.CommandArgument + "'";
+                using (SqlCommand komut = new SqlCommand(sorgu, sql.connection()))
+                {
+                    if (komut.ExecuteNonQuery() > 0)
+                    {
+                        GetData();
+                    }
+                    else
+                    {
+                        Functions.toastrGoster(this.Page, 2, "    Kullanıcı Silinemedi!");
+                    }
+                    sql.disconnection();
+                }
+            }
         }
     }
 }

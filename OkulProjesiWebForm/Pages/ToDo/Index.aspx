@@ -19,17 +19,23 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body p-0">
-            <asp:PlaceHolder ID="placeholder" runat="server" />
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="table table-dark table-hover" OnRowCommand="GridView1_RowCommand">
+            <asp:GridView ID="UserTable" runat="server" AutoGenerateColumns="false" CssClass="table table-dark table-hover" OnRowCommand="UserTable_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="SubjectTitle" HeaderText="Konu Başlığı" />
                     <asp:BoundField DataField="SubjectText" HeaderText="Konu Metni" />
                     <asp:BoundField DataField="Date" HeaderText="Tarih" />
                     <asp:BoundField DataField="Status" HeaderText="Durum" />
-                    <asp:TemplateField HeaderText="">
+                    <asp:TemplateField HeaderText="" ItemStyle-CssClass="text-center">
                         <ItemTemplate>
-                            <asp:Button runat="server" Text="Sil" CssClass="btn btn-outline-danger" CommandName="DeleteCommand" CommandArgument='<%#Eval("ID") %>' />
-                            <asp:Button runat="server" Text="Düzenle" CssClass="btn btn-outline-danger" CommandName="EditCommand" CommandArgument='<%#Eval("ID") %>' />
+                            <asp:LinkButton runat="server" CssClass="btn btn-outline-info" CommandName="ViewCommand" CommandArgument='<%#Eval("ID") %>'>
+                                <i class="far fa-eye"></i>
+                            </asp:LinkButton>
+                            <asp:LinkButton runat="server" CssClass="btn btn-outline-primary" CommandName="EditCommand" CommandArgument='<%#Eval("ID") %>'>
+                                <i class="far fa-edit"></i>
+                            </asp:LinkButton>
+                            <asp:LinkButton runat="server" CssClass="btn btn-outline-danger" CommandName="DeleteCommand" CommandArgument='<%#Eval("ID") %>'>
+                                <i class="fas fa-times"></i>
+                            </asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

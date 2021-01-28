@@ -18,14 +18,13 @@ namespace OkulProjesiWebForm.Pages.ToDo
             {
                 Response.Redirect("~/Pages/Account/Login.aspx");
             }
-            // ViewTable();
             if (!IsPostBack)
             {
                 GetData();
             }
         }
         
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void UserTable_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "DeleteCommand")
             {
@@ -49,8 +48,8 @@ namespace OkulProjesiWebForm.Pages.ToDo
                 SqlDataAdapter adapter = new SqlDataAdapter(komut);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                UserTable.DataSource = ds;
+                UserTable.DataBind();
             }
             sql.disconnection();
         }
@@ -69,7 +68,7 @@ namespace OkulProjesiWebForm.Pages.ToDo
                 {
                     Functions.toastrGoster(this.Page, 2, "    To-Do Silinemedi!");
                 }
-
+                sql.disconnection();
             }
         }
     }

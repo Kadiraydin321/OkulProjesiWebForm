@@ -60,14 +60,6 @@
                             <a href="~/Pages/Contact" runat="server" class="nav-link">İletişim</a>
                       </li>
                 </ul>
-                <!-- Right navbar links -->
-                <!--
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link"></a>
-                    </li>
-                </ul>
-                -->
             </div>
         </nav>
         <!-- /.navbar -->
@@ -126,7 +118,15 @@
                             <a runat="server"  href="~/Pages/ToDo/Index"  class="nav-link">
                                 <i class="nav-icon fas fa-list" style="color: white"></i>
                                 <p>
-                                    To-Do List
+                                    To-Do Listele
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a runat="server"  href="~/Pages/ToDo/AddToDo"  class="nav-link">
+                                <i class="nav-icon far fa-plus-square" style="color: white"></i>
+                                <p>
+                                    To-Do Ekle
                                 </p>
                             </a>
                         </li>
