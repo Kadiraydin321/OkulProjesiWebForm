@@ -18,117 +18,59 @@ namespace OkulProjesiWebForm.Pages.ToDo
             {
                 Response.Redirect("~/Pages/Account/Login.aspx");
             }
-            ViewTable();
-        }
-
-        private void ViewTable()
-        {
+            // ViewTable();
             if (!IsPostBack)
             {
-                DataTable dt = GetData();
-                StringBuilder html = new StringBuilder();
-
-                html.Append("<table id='UserTable' class='table table-dark table-hover'>");
-                html.Append("<thead>");
-                html.Append("<tr role='row'>");
-                html.Append("<th>#</th>");
-                html.Append("<th>Konu Başlığı</th>");
-                html.Append("<th>Konu Metni</th>");
-                html.Append("<th>Tarih</th>");
-                html.Append("<th>Durum</th>");
-                html.Append("<th></th>");
-                html.Append("</tr>");
-                html.Append("</thead>");
-                html.Append("<tbody>");
-
-                int artis = 1;
-                int itemID;
-                foreach (DataRow row in dt.Rows)
-                {
-                    html.Append("<tr role='row'>");
-                    html.Append("<td>" + artis.ToString() + "</td>");
-                    foreach (DataColumn column in dt.Columns)
-                    {
-                        if (column.ColumnName == "ID")
-                        {
-                            itemID = Convert.ToInt32(row[column.ColumnName]);
-                            continue;
-                        }
-                        else if (column.ColumnName == "UserID")
-                        {
-                            continue;
-                        }
-                        else if (column.ColumnName == "Date")
-                        {
-                            html.Append("<td>");
-                            html.Append(row[column.ColumnName].ToString().Substring(0, 10));
-                            html.Append("</td>");
-                        }
-                        else if (column.ColumnName == "SubjectTitle")
-                        {
-                            html.Append("<td>");
-                            if (row[column.ColumnName].ToString().Length < 40)
-                            {
-                                html.Append(row[column.ColumnName]);
-                            }
-                            else
-                            {
-                                html.Append(row[column.ColumnName].ToString().Substring(0, 37) + "...");
-                            }
-                            html.Append("</td>");
-                        }
-                        else if (column.ColumnName == "SubjectText")
-                        {
-                            html.Append("<td>");
-                            if (row[column.ColumnName].ToString().Length < 50)
-                            {
-                                html.Append(row[column.ColumnName]);
-                            }
-                            else
-                            {
-                                html.Append(row[column.ColumnName].ToString().Substring(0, 47) + "...");
-                            }
-                            html.Append("</td>");
-                        }
-                        else
-                        {
-                            html.Append("<td>");
-                            html.Append(row[column.ColumnName]);
-                            html.Append("</td>");
-                        }
-                    }
-                    html.Append("<td><asp:Button ID='SilButton"+artis.ToString()+ "' OnClick='SilButton_Click' runat='server' Text='Sil' CssClass='btn btn-outline-danger' CommandName='DeleteCommand' CommandArgument='<%#Eval(itemID) %>' /></td>");
-                    html.Append("</tr>");
-                    artis++;
-                }
-                html.Append("</tbody>");
-                html.Append("</table>");
-
-                placeholder.Controls.Add(new Literal { Text = html.ToString() });
+                GetData();
             }
         }
-        private DataTable GetData()
+        
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DeleteCommand")
+            {
+                deleteItem(e);
+            }
+            if (e.CommandName == "EditCommand")
+            {
+                Response.Redirect("~/Pages/ToDo/EditToDo.aspx?ID=" + e.CommandArgument);
+            }
+            if (e.CommandName == "ViewCommand")
+            {
+                Response.Redirect("~/Pages/ToDo/ViewToDo.aspx?ID=" + e.CommandArgument);
+            }
+        }
+        private void GetData()
         {
             SqlConnect sql = new SqlConnect();
             String sorgu = "Select * From ToDoList Where UserID='" + Session["UID"].ToString() + "' ORDER BY Date DESC";
             using (SqlCommand komut = new SqlCommand(sorgu, sql.connection()))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(komut);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                return dt;
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
             }
             sql.disconnection();
         }
 
-        private void DeleteData(int itemID)
+        private void deleteItem(GridViewCommandEventArgs e)
         {
+            SqlConnect sql = new SqlConnect();
+            String sorgu = "Delete From ToDoList Where ID='" + e.CommandArgument + "'";
+            using (SqlCommand komut = new SqlCommand(sorgu, sql.connection()))
+            {
+                if (komut.ExecuteNonQuery() > 0)
+                {
+                    GetData();
+                }
+                else
+                {
+                    Functions.toastrGoster(this.Page, 2, "    To-Do Silinemedi!");
+                }
 
-        }
-
-        protected void SilButton_Click(object sender, EventArgs e)
-        {
-
+            }
         }
     }
 }

@@ -20,6 +20,20 @@
         <!-- /.card-header -->
         <div class="card-body p-0">
             <asp:PlaceHolder ID="placeholder" runat="server" />
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="table table-dark table-hover" OnRowCommand="GridView1_RowCommand">
+                <Columns>
+                    <asp:BoundField DataField="SubjectTitle" HeaderText="Konu Başlığı" />
+                    <asp:BoundField DataField="SubjectText" HeaderText="Konu Metni" />
+                    <asp:BoundField DataField="Date" HeaderText="Tarih" />
+                    <asp:BoundField DataField="Status" HeaderText="Durum" />
+                    <asp:TemplateField HeaderText="">
+                        <ItemTemplate>
+                            <asp:Button runat="server" Text="Sil" CssClass="btn btn-outline-danger" CommandName="DeleteCommand" CommandArgument='<%#Eval("ID") %>' />
+                            <asp:Button runat="server" Text="Düzenle" CssClass="btn btn-outline-danger" CommandName="EditCommand" CommandArgument='<%#Eval("ID") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
         </div>
         <!-- /.card-body -->
     </div>
