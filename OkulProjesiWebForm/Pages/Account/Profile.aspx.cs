@@ -17,7 +17,11 @@ namespace OkulProjesiWebForm.Pages.Account
             {
                 Response.Redirect("~/Pages/Account/Login.aspx");
             }
-            profilCek();
+            if (!IsPostBack)
+            {
+                profilCek();
+            }
+           
         }
         protected void ProfileUpdateButton_Click(object sender, EventArgs e)
         {
@@ -25,10 +29,10 @@ namespace OkulProjesiWebForm.Pages.Account
         }
         private void profilCek()
         {
-            UserNameTextBox.Attributes["Value"] = Session["UserName"].ToString();
-            NameTextBox.Attributes["Value"] = Session["Name"].ToString();
-            SurnameTextBox.Attributes["Value"] = Session["Surname"].ToString();
-            EmailTextBox.Attributes["Value"] = Session["Email"].ToString();
+            UserNameTextBox.Text = Session["UserName"].ToString();
+            NameTextBox.Text = Session["Name"].ToString();
+            SurnameTextBox.Text = Session["Surname"].ToString();
+            EmailTextBox.Text = Session["Email"].ToString();
         }
 
         private void profilGuncelle()

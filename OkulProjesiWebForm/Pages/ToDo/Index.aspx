@@ -19,17 +19,14 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body p-0">
-            <asp:GridView ID="UserTable" runat="server" AutoGenerateColumns="false" CssClass="table table-dark table-hover" OnRowCommand="UserTable_RowCommand">
+            <asp:GridView ID="ToDoTable" runat="server" AutoGenerateColumns="false" CssClass="table table-dark table-hover" OnRowCommand="ToDoTable_RowCommand">
                 <Columns>
-                    <asp:BoundField DataField="SubjectTitle" HeaderText="Konu Başlığı" />
-                    <asp:BoundField DataField="SubjectText" HeaderText="Konu Metni" />
-                    <asp:BoundField DataField="Date" HeaderText="Tarih" />
-                    <asp:BoundField DataField="Status" HeaderText="Durum" />
-                    <asp:TemplateField HeaderText="" ItemStyle-CssClass="text-center">
+                    <asp:BoundField DataField="SubjectTitle" HeaderText="Konu Başlığı" ItemStyle-Width="20%"/>
+                    <asp:BoundField DataField="SubjectText" HeaderText="Konu Metni" ItemStyle-Width="50%"/>
+                    <asp:BoundField DataField="Date" HeaderText="Tarih" ItemStyle-Width="10%"/>
+                    <asp:BoundField DataField="Status" HeaderText="Durum" ItemStyle-Width="10%"/>
+                    <asp:TemplateField HeaderText="" ItemStyle-CssClass="text-center" ItemStyle-Width="10%">
                         <ItemTemplate>
-                            <asp:LinkButton runat="server" CssClass="btn btn-outline-info" CommandName="ViewCommand" CommandArgument='<%#Eval("ID") %>'>
-                                <i class="far fa-eye"></i>
-                            </asp:LinkButton>
                             <asp:LinkButton runat="server" CssClass="btn btn-outline-primary" CommandName="EditCommand" CommandArgument='<%#Eval("ID") %>'>
                                 <i class="far fa-edit"></i>
                             </asp:LinkButton>

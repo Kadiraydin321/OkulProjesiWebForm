@@ -24,7 +24,7 @@ namespace OkulProjesiWebForm.Pages.ToDo
             }
         }
         
-        protected void UserTable_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void ToDoTable_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "DeleteCommand")
             {
@@ -34,22 +34,18 @@ namespace OkulProjesiWebForm.Pages.ToDo
             {
                 Response.Redirect("~/Pages/ToDo/EditToDo.aspx?ID=" + e.CommandArgument);
             }
-            if (e.CommandName == "ViewCommand")
-            {
-                Response.Redirect("~/Pages/ToDo/ViewToDo.aspx?ID=" + e.CommandArgument);
-            }
         }
         private void GetData()
         {
             SqlConnect sql = new SqlConnect();
-            String sorgu = "Select * From ToDoList Where UserID='" + Session["UID"].ToString() + "' ORDER BY Date DESC";
+            String sorgu = "Select * From ToDoList Where UserID='" + Session["UID"].ToString() + "' ORDER BY Status DESC, Date ASC";
             using (SqlCommand komut = new SqlCommand(sorgu, sql.connection()))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(komut);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
-                UserTable.DataSource = ds;
-                UserTable.DataBind();
+                ToDoTable.DataSource = ds;
+                ToDoTable.DataBind();
             }
             sql.disconnection();
         }
@@ -63,6 +59,7 @@ namespace OkulProjesiWebForm.Pages.ToDo
                 if (komut.ExecuteNonQuery() > 0)
                 {
                     GetData();
+                    Functions.toastrGoster(this.Page, 0, "    To-Do Silindi.");
                 }
                 else
                 {
