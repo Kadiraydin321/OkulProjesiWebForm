@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div style="margin-top: 40px;"></div>
-    <div class="card">
+    <div class="card card-dark card-outline">
         <div class="card-header">
         <h3 class="card-title">To-Do List</h3>
         <div class="card-tools">

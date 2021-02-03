@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
    <div style="margin-top: 40px;"></div>
-    <div class="card">
+    <div class="card card-dark card-outline">
         <div class="card-header">
         <h3 class="card-title">Kullanıcılar</h3>
         <div class="card-tools">
