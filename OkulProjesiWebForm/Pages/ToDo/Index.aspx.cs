@@ -45,7 +45,16 @@ namespace OkulProjesiWebForm.Pages.ToDo
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
                 ToDoTable.DataSource = ds;
-                ToDoTable.DataBind();
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    ToDoTable.DataBind();
+                    NullTable.Visible = false;
+                }
+                else
+                {
+                    ToDoTable.DataBind();
+                    NullTable.Visible = true;
+                }
             }
             sql.disconnection();
         }
@@ -67,6 +76,37 @@ namespace OkulProjesiWebForm.Pages.ToDo
                 }
                 sql.disconnection();
             }
+        }
+        protected void SearchButton_Click(object sender, EventArgs e)
+        {
+            SqlConnect sql = new SqlConnect();
+
+            String sorgu = "Select * From ToDoList Where " +
+                "SubjectTitle Like '%"+SearchTextBox.Text+ "%' and UserID='" + Session["UID"].ToString() + "'" +
+                "or SubjectText Like '%" + SearchTextBox.Text + "%' and UserID='" + Session["UID"].ToString() + "'" +
+                "or Status Like '%" + SearchTextBox.Text + "%' and UserID='" + Session["UID"].ToString() + "'" +
+                " ORDER BY Status DESC, Date ASC";
+
+            using (SqlCommand komut = new SqlCommand(sorgu, sql.connection()))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(komut);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                ToDoTable.DataSource = ds;
+                if (ds.Tables[0].Rows.Count >0)
+                {
+                    ToDoTable.DataBind();
+                    nullRow.Visible = false;
+                }
+                else
+                {
+                    ToDoTable.DataBind();
+                    nullRow.Visible=true;
+                }
+                
+            }
+            sql.disconnection();
+            
         }
     }
 }

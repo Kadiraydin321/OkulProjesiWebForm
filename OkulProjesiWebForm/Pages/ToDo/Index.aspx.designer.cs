@@ -24,6 +24,24 @@ namespace OkulProjesiWebForm.Pages.ToDo
         protected global::System.Web.UI.WebControls.LinkButton NewToDo1;
 
         /// <summary>
+        /// SearchTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox SearchTextBox;
+
+        /// <summary>
+        /// SearchButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton SearchButton;
+
+        /// <summary>
         /// ToDoTable control.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,15 @@ namespace OkulProjesiWebForm.Pages.ToDo
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView ToDoTable;
+
+        /// <summary>
+        /// nullRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nullRow;
 
         /// <summary>
         /// NullTable control.

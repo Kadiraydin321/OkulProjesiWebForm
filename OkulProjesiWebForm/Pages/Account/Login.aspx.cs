@@ -13,6 +13,10 @@ namespace OkulProjesiWebForm.Pages.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UID"] != null)
+            {
+                Response.Redirect("~/Pages/ToDo/Index.aspx");
+            }
             if (!IsPostBack)
             {
                 if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
@@ -47,7 +51,7 @@ namespace OkulProjesiWebForm.Pages.Account
                     Session["Surname"] = dt.Rows[0][3].ToString();
                     Session["Email"] = dt.Rows[0][4].ToString();
                     Session["Password"] = dt.Rows[0][5].ToString();
-                    Response.Redirect("../ToDo/Index.aspx");
+                    Response.Redirect("~/Pages/ToDo/Index.aspx");
                 }
                 else
                 {

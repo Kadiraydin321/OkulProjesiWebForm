@@ -13,7 +13,7 @@
         <!-- Card Body -->
         <div class="card-body">
             <div class="form-group">
-                <asp:Label ID="Label1" runat="server" CssClass="text-black" Text="To-Do List projesi sahibi Kadir Aydın."></asp:Label>
+                <asp:Label ID="Label1" runat="server" CssClass="text-black" Text="Bu web sitesi, Ankara Yıldırım Beyazıt Üniversitesi - Bilgisayar Programcılığı bölümü öğrencisi Kadir Aydın'ın yapmış olduğu İnternet Programlama dersi final projesidir."></asp:Label>
             </div>
             <div class="form-group">
                 <asp:Label ID="Label4" runat="server" CssClass="text-black" Text="Telefon:"></asp:Label>
@@ -26,6 +26,13 @@
             <div class="form-group">
                 <asp:Label ID="Label2" runat="server" CssClass="text-black" Text="Adres:"></asp:Label>
                 <asp:Label ID="Label3" runat="server" CssClass="text-secondary" Text="15 Temmuz Şehitleri Binası C Blok 1. Kat Takdir Cad. 150. Sok. No 5 06010 Etlik Keçiören/ANKARA"></asp:Label>
+            </div>
+            <div class="form-group">
+                <a href="https://aybu.edu.tr"><i class="fas fa-graduation-cap" style="font-size:45px; margin-right:10px;"></i></a>
+                <a href="https://www.instagram.com/ybuankara"><i class="fab fa-instagram" style="font-size:45px; margin-right:10px;"></i></a> 
+                <a href="https://twitter.com/ybuankara"><i class="fab fa-twitter" style="font-size:45px; margin-right:10px;"></i></a> 
+                <a href="https://www.facebook.com/ybuankara"><i class="fab fa-facebook-f" style="font-size:45px; margin-right:10px;"></i></a> 
+                <a href="https://tr.linkedin.com/organization-guest/school/ybuankara"><i class="fab fa-linkedin-in" style="font-size:45px;"></i></a>
             </div>
         </div>
     </div>
