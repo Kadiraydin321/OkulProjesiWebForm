@@ -27,12 +27,12 @@
                 <asp:Label ID="Label2" runat="server" CssClass="text-black" Text="Adres:"></asp:Label>
                 <asp:Label ID="Label3" runat="server" CssClass="text-secondary" Text="15 Temmuz Şehitleri Binası C Blok 1. Kat Takdir Cad. 150. Sok. No 5 06010 Etlik Keçiören/ANKARA"></asp:Label>
             </div>
-            <div class="form-group">
-                <a href="https://aybu.edu.tr"><i class="fas fa-graduation-cap" style="font-size:45px; margin-right:10px;"></i></a>
-                <a href="https://www.instagram.com/ybuankara"><i class="fab fa-instagram" style="font-size:45px; margin-right:10px;"></i></a> 
-                <a href="https://twitter.com/ybuankara"><i class="fab fa-twitter" style="font-size:45px; margin-right:10px;"></i></a> 
-                <a href="https://www.facebook.com/ybuankara"><i class="fab fa-facebook-f" style="font-size:45px; margin-right:10px;"></i></a> 
-                <a href="https://tr.linkedin.com/organization-guest/school/ybuankara"><i class="fab fa-linkedin-in" style="font-size:45px;"></i></a>
+            <div class="form-group text-center">
+                <a href="https://aybu.edu.tr"><i class="fas fa-graduation-cap" style="color:orange; font-size:45px; margin-right:50px;"></i></a>
+                <a href="https://www.instagram.com/ybuankara"><i class="fab fa-instagram" style="color:orange; font-size:45px; margin-right:50px;"></i></a> 
+                <a href="https://twitter.com/ybuankara"><i class="fab fa-twitter" style="color:orange; font-size:45px; margin-right:50px;"></i></a> 
+                <a href="https://www.facebook.com/ybuankara"><i class="fab fa-facebook-f" style="color:orange; font-size:45px; margin-right:50px;"></i></a> 
+                <a href="https://tr.linkedin.com/organization-guest/school/ybuankara"><i class="fab fa-linkedin-in" style="color:orange; font-size:45px;"></i></a>
             </div>
         </div>
     </div>

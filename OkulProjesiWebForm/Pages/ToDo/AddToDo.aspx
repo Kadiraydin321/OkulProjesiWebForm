@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
          <div style="height:40px;"></div>
-         <div class="card card-danger">
+         <div class="card card-success">
              <!-- Header -->
                 <div class="card-header">
                         To-Do Ekleme Sayfası
@@ -28,7 +28,7 @@
                 </div>
              <!-- Footer -->
                 <div class="card-footer">
-                    <asp:Button ID="AddToDoButton" runat="server" CssClass="btn btn-outline-danger" OnClick="AddToDoButton_Click" Text="Ekle" />
+                    <asp:Button ID="AddToDoButton" runat="server" CssClass="btn btn-outline-success" OnClick="AddToDoButton_Click" Text="Ekle" />
                 </div>
        </div>
     </div>
